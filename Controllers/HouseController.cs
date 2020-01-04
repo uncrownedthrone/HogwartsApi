@@ -14,5 +14,13 @@ namespace HogwartsApi.Controllers
       var db = new DatabaseContext();
       return Ok(db.Houses.OrderBy(house => house.HouseName));
     }
+    [HttpPost]
+    public ActionResult CreateHouse(House house)
+    {
+      var db = new DatabaseContext();
+      db.Houses.Add(house);
+      db.SaveChanges();
+      return Ok(house);
+    }
   }
 }
