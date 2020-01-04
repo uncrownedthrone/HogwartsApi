@@ -7,7 +7,7 @@ namespace HogwartsApi.Models
 {
   public partial class DatabaseContext : DbContext
   {
-
+    public DbSet<House> Houses { get; set; }
     private string ConvertPostConnectionToConnectionString(string connection)
     {
       var _connection = connection.Replace("postgres://", String.Empty);
