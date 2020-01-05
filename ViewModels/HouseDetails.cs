@@ -8,7 +8,7 @@ namespace HogwartsApi.Models
     public string HouseName { get; set; }
     public string HouseColor { get; set; }
 
-    public List<StudentList> StudentLists { get; set; }
-       = new List<StudentList>();
+    public List<StudentTable> Students { get; set; }
+       = new List<StudentTable>();
   }
 }

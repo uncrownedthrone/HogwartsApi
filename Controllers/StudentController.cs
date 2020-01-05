@@ -15,25 +15,25 @@ namespace StudentApi.Controllers
     public ActionResult GetAllStudents()
     {
       var db = new DatabaseContext();
-      return Ok(db.Students.OrderBy(student => student.FullName));
+      return Ok(db.StudentTables.OrderBy(student => student.FullName));
     }
     [HttpPost]
     public ActionResult CreateStudent(NewStudent vm)
     {
       var db = new DatabaseContext();
-      var student = db.Students.FirstOrDefault(st => st.Id == vm.StudentId);
+      var student = db.StudentTables.FirstOrDefault(st => st.Id == vm.StudentId);
       if (student == null)
       {
         return NotFound();
       }
       else
       {
-        var list = new StudentList
+        var list = new StudentTable
         {
           FullName = vm.FullName,
           StudentId = vm.StudentId
         };
-        db.Students.Add(list);
+        db.StudentTables.Add(list);
         db.SaveChanges();
         var rv = new CreatedStudent
         {
@@ -45,10 +45,10 @@ namespace StudentApi.Controllers
       }
     }
     [HttpPut("{id}")]
-    public ActionResult UpdateStudent(StudentList student)
+    public ActionResult UpdateStudent(StudentTable student)
     {
       var db = new DatabaseContext();
-      var prevStudent = db.Students.FirstOrDefault(st => st.Id == student.Id);
+      var prevStudent = db.StudentTables.FirstOrDefault(st => st.Id == student.Id);
       if (prevStudent == null)
       {
         return NotFound();
@@ -65,14 +65,14 @@ namespace StudentApi.Controllers
     public ActionResult DeleteStudent(int id)
     {
       var db = new DatabaseContext();
-      var student = db.Students.FirstOrDefault(st => st.Id == id);
+      var student = db.StudentTables.FirstOrDefault(st => st.Id == id);
       if (student == null)
       {
         return NotFound();
       }
       else
       {
-        db.Students.Remove(student);
+        db.StudentTables.Remove(student);
         db.SaveChanges();
         return Ok();
       }
@@ -81,7 +81,7 @@ namespace StudentApi.Controllers
     public ActionResult GetOneStudent(int id)
     {
       var db = new DatabaseContext();
-      var student = db.Students.Include(i => i.Student).FirstOrDefault(st => st.Id == id);
+      var student = db.StudentTables.Include(i => i.StudentId).FirstOrDefault(st => st.Id == id);
       if (student == null)
       {
         return NotFound();

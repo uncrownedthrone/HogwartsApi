@@ -1,12 +1,12 @@
 namespace HogwartsApi.Models
 {
-  public class StudentList
+  public class StudentTable
   {
     public int Id { get; set; }
     public string FullName { get; set; }
 
     public int StudentId { get; set; }
 
-    public StudentList Student { get; set; }
+    public House House { get; set; }
   }
 }

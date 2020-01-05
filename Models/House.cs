@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace HogwartsApi.Models
 {
@@ -8,7 +9,7 @@ namespace HogwartsApi.Models
     public string HouseName { get; set; }
     public string HouseColor { get; set; }
 
-    public List<StudentList> StudentLists { get; set; }
-       = new List<StudentList>();
+    public List<StudentTable> StudentTables { get; set; }
+       = new List<StudentTable>();
   }
 }

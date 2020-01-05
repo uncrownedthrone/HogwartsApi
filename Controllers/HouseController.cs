@@ -21,7 +21,7 @@ namespace HogwartsApi.Controllers
     public ActionResult GetOneHouse(int id)
     {
       var db = new DatabaseContext();
-      var house = db.Houses.Include(i => i.StudentLists).FirstOrDefault(ho => ho.Id == id);
+      var house = db.Houses.Include(i => i.StudentTables).FirstOrDefault(ho => ho.Id == id);
       if (house == null)
       {
         return NotFound();
