@@ -2,7 +2,7 @@ using System.Collections.Generic;
 
 namespace HogwartsApi.Models
 {
-  public class House
+  public class HouseDetails
   {
     public int Id { get; set; }
     public string HouseName { get; set; }
